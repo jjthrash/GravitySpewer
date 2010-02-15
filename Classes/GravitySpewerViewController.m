@@ -18,6 +18,13 @@
 - (IBAction)startStopSpewing {
     [ipField resignFirstResponder];
     [portField resignFirstResponder];
+
+    [[NSUserDefaults standardUserDefaults] setObject:ipField.text forKey:@"STORED_IP"];
+    [[NSUserDefaults standardUserDefaults] setObject:portField.text forKey:@"STORED_PORT"];
+
+    [[GravitySpewer instance] setAddress:ipField.text];
+    [[GravitySpewer instance] setPort:[portField.text intValue]];
+
     if ([[GravitySpewer instance] spewing]) {
         [[GravitySpewer instance] stop];
         startStopSpewingButton.titleLabel.text = @"Start";
@@ -31,6 +38,9 @@
 // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
 - (void)viewDidLoad {
     [super viewDidLoad];
+
+    ipField.text   = [[NSUserDefaults standardUserDefaults] stringForKey:@"STORED_IP"];
+    portField.text = [[NSUserDefaults standardUserDefaults] stringForKey:@"STORED_PORT"];
 }
 
 
