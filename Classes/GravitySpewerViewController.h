@@ -9,8 +9,16 @@
 #import <UIKit/UIKit.h>
 
 @interface GravitySpewerViewController : UIViewController {
-
+    UIButton *startStopSpewingButton;
+    UITextField *ipField;
+    UITextField *portField;
 }
+
+@property (nonatomic, retain) IBOutlet UIButton *startStopSpewingButton;
+@property (nonatomic, retain) IBOutlet UITextField *ipField;
+@property (nonatomic, retain) IBOutlet UITextField *portField;
+
+- (IBAction)startStopSpewing;
 
 @end
 
